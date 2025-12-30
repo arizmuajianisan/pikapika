@@ -53,7 +53,7 @@ def check_tests_pass() -> None:
     """Run tests to ensure they pass."""
     print("🧪 Running tests...")
     try:
-        run_command(["uv", "run", "pytest"])
+        run_command(["uv", "run", "python", "-m", "pytest"])
         print("✅ All tests passed")
     except subprocess.CalledProcessError:
         print("❌ Tests failed")
