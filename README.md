@@ -59,6 +59,18 @@ Optional:
 pip install pikapika-organizer
 ```
 
+### Install from GitHub Packages
+
+```bash
+uv add --index-url https://python.pkg.github.com/arizmuajianisan/ pikapika-organizer
+```
+
+Or for temporary installation:
+
+```bash
+uv pip install --index-url https://python.pkg.github.com/arizmuajianisan/ pikapika-organizer
+```
+
 Useful helpers are available via `make`:
 
 ```bash
