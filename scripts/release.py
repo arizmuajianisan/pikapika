@@ -26,7 +26,9 @@ def update_version(new_version: str) -> None:
     pyproject_path = Path("pyproject.toml")
     content = pyproject_path.read_text()
     # Only update version at start of line, not target-version
-    content = re.sub(r'^version\s*=\s*"[^"]+"', f'version = "{new_version}"', content, flags=re.MULTILINE)
+    pattern = r'^version\s*=\s*"[^"]+"'
+    replacement = f'version = "{new_version}"'
+    content = re.sub(pattern, replacement, content, flags=re.MULTILINE)
     pyproject_path.write_text(content)
     print(f"✅ Updated version to {new_version}")
 
