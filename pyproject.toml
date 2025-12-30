@@ -28,7 +28,7 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/arizmuajianisan/pikapika"
+Homepage = "https://arizmuajianisan.github.io/pikapika"
 Repository = "https://github.com/arizmuajianisan/pikapika"
 "Bug Reports" = "https://github.com/arizmuajianisan/pikapika/issues"
 

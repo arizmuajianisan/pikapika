@@ -1,4 +1,4 @@
-.PHONY: help test check format format-check install dev-install run clean release-patch release-minor release-major
+.PHONY: help test check format format-check install dev-install run clean release-patch release-minor release-major release-dry
 
 # Default target
 help:
@@ -14,6 +14,7 @@ help:
 	@echo "  release-patch - Create patch release (x.y.Z)"
 	@echo "  release-minor - Create minor release (x.Y.z)"
 	@echo "  release-major - Create major release (X.y.z)"
+	@echo "  release-dry   - Preview release without making changes"
 
 # Run tests
 test:
@@ -62,3 +63,6 @@ release-minor:
 
 release-major:
 	uv run python scripts/release.py major
+
+release-dry:
+	uv run python scripts/release.py patch --dry-run
