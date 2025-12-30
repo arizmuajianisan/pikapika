@@ -6,6 +6,8 @@
 ![Downloads](https://pepy.tech/badge/pikapika)
 ![GitHub Stars](https://img.shields.io/github/stars/arizmuajianisan/pikapika)
 
+📚 **[View Documentation](https://arizmuajianisan.github.io/pikapika/)** | 🐍 **[PyPI Package](https://pypi.org/project/pikapika/)** | 🐛 **[Report Issues](https://github.com/arizmuajianisan/pikapika/issues)**
+
 
 “Pika Pika” is an onomatopoeia in Japanese, meaning “shiny” or “sparkly.” This
 project is mainly used to clean your folder of clutter and manage it efficiently.
