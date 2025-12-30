@@ -5,9 +5,7 @@ This directory contains the static website for Pikapika that is deployed to GitH
 ## 🌐 Live Site
 
 The documentation is automatically deployed to GitHub Pages at:
-- **https://[your-username].github.io/pikapika/**
-
-Replace `[your-username]` with your GitHub username.
+- **https://arizmuajianisan.github.io/pikapika/**
 
 ## 📁 Structure
 

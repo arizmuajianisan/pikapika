@@ -9,8 +9,8 @@
 📚 **[View Documentation](https://arizmuajianisan.github.io/pikapika/)** | 🐍 **[PyPI Package](https://pypi.org/project/pikapika/)** | 🐛 **[Report Issues](https://github.com/arizmuajianisan/pikapika/issues)**
 
 
-“Pika Pika” is an onomatopoeia in Japanese, meaning “shiny” or “sparkly.” This
-project is mainly used to clean your folder of clutter and manage it efficiently.
+“Pika Pika” is an onomatopoeia in Japanese, meaning “shiny” or “sparkly”. This
+project is mainly used to clean your folders of clutter and manage them efficiently.
 It automatically files items into category folders (Images, Documents, Archives, Installers, etc.)
 and optionally quarantines junk files such as partial downloads.
 
