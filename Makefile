@@ -18,7 +18,7 @@ help:
 
 # Run tests
 test:
-	uv run pytest
+	python -m pytest
 
 # Run linting checks
 check:
