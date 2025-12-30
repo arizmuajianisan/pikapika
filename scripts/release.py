@@ -14,7 +14,8 @@ def get_current_version() -> str:
     """Get current version from pyproject.toml."""
     pyproject_path = Path("pyproject.toml")
     content = pyproject_path.read_text()
-    match = re.search(r'version\s*=\s*"([^"]+)"', content)
+    # Look for version in [project] section, not in [tool.ruff] section
+    match = re.search(r'^version\s*=\s*"([^"]+)"', content, re.MULTILINE)
     if not match:
         raise ValueError("Could not find version in pyproject.toml")
     return match.group(1)
@@ -24,7 +25,8 @@ def update_version(new_version: str) -> None:
     """Update version in pyproject.toml."""
     pyproject_path = Path("pyproject.toml")
     content = pyproject_path.read_text()
-    content = re.sub(r'version\s*=\s*"[^"]+"', f'version = "{new_version}"', content)
+    # Only update version at start of line, not target-version
+    content = re.sub(r'^version\s*=\s*"[^"]+"', f'version = "{new_version}"', content, flags=re.MULTILINE)
     pyproject_path.write_text(content)
     print(f"✅ Updated version to {new_version}")
 
