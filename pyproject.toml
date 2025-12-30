@@ -1,6 +1,6 @@
 [project]
 name = "pikapika"
-version = "0.1.0"
+version = "0.2.0"
 description = "A Python CLI utility to organize your Downloads folder by extension"
 readme = "README.md"
 requires-python = ">=3.13"
@@ -59,7 +59,7 @@ addopts = "-v --tb=short"
 
 [tool.ruff]
 line-length = 88
-target-version = "py313"
+target-version = "0.2.0"
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "N", "UP", "B", "A", "C4", "T10", "PT", "SIM"]
