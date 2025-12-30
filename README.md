@@ -1,5 +1,8 @@
 # Pikapika — Downloads Folder Organizer
 
+“Pika Pika” is an onomatopoeia in Japanese, meaning “shiny” or “sparkly.” This
+project is mainly used to clean your folder of clutter and manage it efficiently.
+
 Pikapika is a Python CLI that keeps your Downloads directory tidy by automatically
 filing items into category folders (Images, Documents, Archives, Installers, etc.)
 and optionally quarantining junk files such as partial downloads.
@@ -35,7 +38,7 @@ Optional:
 ## Installation
 
 ```bash
-git clone https://github.com/<you>/pikapika.git
+git clone https://github.com/arizmuajianisan/pikapika.git
 cd pikapika
 uv sync --group dev        # installs runtime + dev dependencies
 ```

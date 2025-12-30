@@ -4,7 +4,11 @@ __pycache__/
 build/
 dist/
 wheels/
+.env
 *.egg-info
 
 # Virtual environments
 .venv
+
+# PyPI configuration (contains API tokens)
+.pypirc
