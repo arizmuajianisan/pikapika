@@ -1,95 +1,154 @@
-# Downloads Folder Cleaner (Python)
+# Pikapika — Downloads Folder Organizer
 
-A small Python CLI utility to organize your Windows Downloads folder by moving files into category folders based on file extensions, with an optional “junk quarantine” mode for partial downloads and temp files.
+Pikapika is a Python CLI that keeps your Downloads directory tidy by automatically
+filing items into category folders (Images, Documents, Archives, Installers, etc.)
+and optionally quarantining junk files such as partial downloads.
+
+> Built with Python 3.13 and the [`uv`](https://github.com/astral-sh/uv) workflow.
+
+---
 
 ## Features
 
-- Organizes files into folders like `Images`, `Documents`, `Archives`, `Installers`, etc., based on file extension rules you can edit.
-- Supports a safe preview mode (`--dry-run`) to show what would happen before making changes.
-- Avoids overwriting by auto-renaming duplicates (e.g., `file (1).pdf`).
-- Optional junk handling for extensions like `.crdownload`/`.part`/`.tmp` (quarantine or send to Recycle Bin/Trash).
+- **Dry run mode** (`--dry-run`) shows every planned move before mutating files.
+- **Category routing** using an editable extension map in
+  `src/pikapika/__init__.py`.
+- **Junk handling** for extensions like `.crdownload`, `.tmp`, `.part`:
+  quarantine them or send them to the Recycle Bin (via `send2trash`).
+- **Duplicate safety** — automatically renames conflicts (`file (1).pdf`).
+- **Recursive mode** to organize nested folders while skipping known system
+  directories (`.git`, `__pycache__`, etc.).
 
-- Python 3.9+ recommended.
-- Optional (recommended if you want “delete but reversible”):
-  - `send2trash` (`pip install send2trash`) to move junk files to Recycle Bin/Trash instead of permanently deleting.
+---
 
-1. Create a folder for scripts (recommended):
-   - `C:\Users\<you>\Scripts\`
-2. Save the script as:
-   - `C:\Users\<you>\Scripts\clean_downloads.py`
+## Requirements
+
+- Python **3.13+**
+- [`uv`](https://docs.astral.sh/uv/) for dependency and virtualenv management
+
+Optional:
+- [`send2trash`](https://pypi.org/project/Send2Trash/) (installed automatically)
+  if you want junk files to go to the system trash instead of `_Quarantine`.
+
+---
+
+## Installation
+
+```bash
+git clone https://github.com/<you>/pikapika.git
+cd pikapika
+uv sync --group dev        # installs runtime + dev dependencies
+```
+
+Useful helpers are available via `make`:
+
+```bash
+make help
+# test, check, format, run, clean, ...
+```
+
+If you prefer plain commands:
+
+```bash
+uv run pytest              # run tests
+uv run ruff check          # lint
+uv run ruff format         # format
+uv run pikapika --dry-run  # execute CLI
+```
+
+---
 
 ## Usage
 
-Open **PowerShell** or **Command Prompt** and run:
-
-### 1 Preview changes (recommended first run)
-
-```bash
-python C:\Users\<you>\Scripts\clean_downloads.py --dry-run
-```
-
-This prints planned moves without changing anything.
-
-### 2 Run for real
+Run commands from the project root (or install the package and use the
+`pikapika` entry point globally).
 
 ```bash
-python C:\Users\<you>\Scripts\clean_downloads.py
+uv run pikapika --help
 ```
 
-This creates category folders (if needed) and moves files.
+### Common flags
 
-### 3 Use an explicit Downloads path (recommended on Windows)
+| Flag | Description |
+| --- | --- |
+| `--path PATH` | Downloads directory to organize. Defaults to the current user's Downloads. |
+| `--dry-run` | Print intended operations without touching the filesystem. |
+| `--recursive` | Walk subdirectories (skips known system folders automatically). |
+| `--quarantine-junk` | Move old junk files to `_Quarantine`. |
+| `--junk-days N` | Minimum age (days) for junk files before action (default: 7). |
+| `--trash-junk` | Send junk files to the OS trash (requires `send2trash`). |
 
-If your Downloads is the default location:
+### Examples
 
 ```bash
-python C:\Users\<you>\Scripts\clean_downloads.py --path "%USERPROFILE%\Downloads" --dry-run
+# Preview current user's Downloads
+uv run pikapika --dry-run
+
+# Organize a specific folder for real
+uv run pikapika --path "D:\Downloads" 
+
+# Go recursive and quarantine stale junk (>= 10 days old)
+uv run pikapika --recursive --quarantine-junk --junk-days 10
+
+# Send junk to Recycle Bin instead of _Quarantine
+uv run pikapika --quarantine-junk --trash-junk
 ```
 
-Using an explicit path helps when a PC has a redirected/moved Downloads folder.
-
-### 4 Quarantine junk files (safe option)
-
-Moves junk files older than N days into `Downloads\_Quarantine`:
-
-```bash
-python C:\Users\<you>\Scripts\clean_downloads.py --quarantine-junk --junk-days 7 --dry-run
-python C:\Users\<you>\Scripts\clean_downloads.py --quarantine-junk --junk-days 7
-```
-
-This helps clean up partial downloads like `.crdownload` and `.part`.
-
-### 5 Send junk to Recycle Bin/Trash (optional)
-
-Requires `send2trash`.
-
-```bash
-python C:\Users\<you>\Scripts\clean_downloads.py --quarantine-junk --trash-junk --junk-days 7
-```
+---
 
 ## Customizing categories
 
-Edit the `CATEGORIES` mapping in `clean_downloads.py` to change where extensions go.
+Edit the `CATEGORIES` dictionary in `src/pikapika/__init__.py`:
 
-Example:
+```python
+CATEGORIES = {
+    "Images": {".png", ".jpg", ".svg"},
+    "Documents": {".pdf", ".docx", ".md"},
+    "Archives": {".zip", ".iso"},
+}
+```
 
-- Add `.svg` to `Images`
-- Add `.md` to `Documents`
-- Add `.iso` to `Archives` or a new `DiskImages` category
+Add or rename folders, or introduce new buckets (e.g., `"DesignAssets"`,
+`"DiskImages"`). Always run with `--dry-run` after changes to verify they behave
+as expected.
 
-## Safety notes
+---
 
-- Always run with `--dry-run` after changing rules to verify the moves.
-- Keep the script outside Downloads (e.g., in `C:\Users\<you>\Scripts`) to reduce the chance of it being moved during cleanup.
-- If you use `--recursive`, be careful when you already have organized folders inside Downloads, since recursive runs can traverse subfolders.
+## Development workflow
+
+```bash
+uv sync --group dev   # install everything
+make check            # lint (ruff)
+make format           # format (ruff fmt)
+make test             # run pytest suite
+make run              # run CLI in-place
+```
+
+The test suite (`tests/test_pikapika.py`) covers:
+- extension categorization
+- duplicate handling
+- junk quarantine/trash flow
+- recursive traversal and skip logic
+
+---
 
 ## Troubleshooting
 
-- **Nothing happens**: Try `--dry-run` to confirm the script is seeing files, and confirm the `--path` is correct.
-- **Wrong Downloads folder**: On some Windows setups, the real Downloads location can be redirected; pass the correct folder via `--path`.
-- **`--trash-junk` does nothing**: Install `send2trash` with `pip install send2trash` and retry.
+- **Hardlink warning during `uv sync`**  
+  Set `UV_LINK_MODE=copy` (or run with `uv sync --link-mode=copy`) when working
+  across filesystems that do not support hardlinks.
+
+- **`--trash-junk` no-ops**  
+  Ensure `send2trash` is installed (it is pulled in automatically when using
+  `uv sync --group dev`). On Windows you might need to reopen the shell after
+  installation.
+
+- **Downloads path seems wrong**  
+  Supply an explicit path with `--path` when using redirected or network-backed
+  folders.
+
+---
 
 ## License
 
-Use and modify freely for personal productivity (add your preferred license text if you plan to share publicly).
-```
+MIT — see the [LICENSE](LICENSE) file for details. Feel free to fork, tweak, and ship improvements. Contributions welcome!

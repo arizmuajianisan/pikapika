@@ -29,3 +29,25 @@ dev = [
 
 [project.scripts]
 pikapika = "pikapika:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "A", "C4", "T10", "PT", "SIM"]
+fixable = ["ALL"]
+ignore = ["DTZ005", "DTZ006"]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=9.0.2",
+    "ruff>=0.14.10",
+]

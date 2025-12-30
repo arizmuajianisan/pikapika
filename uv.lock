@@ -37,6 +37,12 @@ dependencies = [
     { name = "send2trash" },
 ]
 
+[package.optional-dependencies]
+dev = [
+    { name = "pytest" },
+    { name = "ruff" },
+]
+
 [package.dev-dependencies]
 dev = [
     { name = "pytest" },
@@ -44,7 +50,12 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "send2trash", specifier = ">=1.8.0" }]
+requires-dist = [
+    { name = "pytest", marker = "extra == 'dev'", specifier = ">=9.0.2" },
+    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.14.10" },
+    { name = "send2trash", specifier = ">=1.8.0" },
+]
+provides-extras = ["dev"]
 
 [package.metadata.requires-dev]
 dev = [

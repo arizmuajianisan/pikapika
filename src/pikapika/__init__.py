@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 import argparse
-from pathlib import Path
 from datetime import datetime, timedelta
+from pathlib import Path
 
 # Optional: safer than permanent delete (moves to Recycle Bin/Trash)
 try:
@@ -150,7 +150,8 @@ def clean_downloads(
 
 def main() -> None:
     ap = argparse.ArgumentParser(
-        description="Cleanser - A tool to organize your Downloads folder by extension. Supports dry-run, recursive processing, and junk file handling.",
+        description="Cleanser - A tool to organize your Downloads folder by extension. "
+        "Supports dry-run, recursive processing, and junk file handling.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
@@ -159,7 +160,7 @@ Examples:
   cleanser --dry-run          # Show what would be done
   cleanser --recursive        # Also process subfolders
   cleanser --quarantine-junk  # Handle junk files
-        """
+        """,
     )
     ap.add_argument(
         "--path",
