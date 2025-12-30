@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -75,4 +75,4 @@ jobs:
       - name: Test installation
         run: |
           pip install dist/*.whl
-          pikapika --help
+          pikapika-organizer --help

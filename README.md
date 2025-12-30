@@ -1,23 +1,24 @@
-# Pikapika — Downloads Folder Organizer
-
-*Automatically organize your files by extension with one command*
+# Pikapika Organizer — Downloads Folder Organizer
 
 <p align="center">
   <img src="https://arizmuajianisan.github.io/pikapika/logo.png" alt="Pikapika Logo" width="120">
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-3.13-blue" alt="Python 3.13">
-  <img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License">
-  <img src="https://img.shields.io/badge/uv-compatible-green" alt="uv compatible">
-  <img src="https://pepy.tech/badge/pikapika" alt="Downloads">
-  <img src="https://img.shields.io/github/stars/arizmuajianisan/pikapika" alt="GitHub Stars">
+  <em>Automatically organize your files by extension with one command</em>
 </p>
 
 <p align="center">
-<a href="https://arizmuajianisan.github.io/pikapika/">📚 View Documentation</a> | <a href="https://pypi.org/project/pikapika/">🐍 PyPI Package</a> | <a href="https://github.com/arizmuajianisan/pikapika/issues">🐛 Report Issues</a>
+  <img src="https://img.shields.io/badge/Python-3.13-blue" alt="Python 3.13">
+  <img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License">
+  <img src="https://img.shields.io/badge/uv-compatible-green" alt="uv compatible">
+  <img src="https://github.com/arizmuajianisan/pikapika/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI">
+  <img src="https://github.com/arizmuajianisan/pikapika/workflows/Release/badge.svg" alt="Release">
 </p>
 
+<p align="center">
+<a href="https://arizmuajianisan.github.io/pikapika/">📚 View Documentation</a> | <a href="https://pypi.org/project/pikapika-organizer/">🐍 PyPI Package</a> | <a href="https://github.com/arizmuajianisan/pikapika/issues">🐛 Report Issues</a>
+</p>
 
 “_Pika Pika_ (ピカピカ)” is an onomatopoeia in Japanese, meaning “shiny” or “sparkly”. This
 project is mainly used to clean your folders of clutter and manage them efficiently.
@@ -55,9 +56,7 @@ Optional:
 ## Installation
 
 ```bash
-git clone https://github.com/arizmuajianisan/pikapika.git
-cd pikapika
-uv sync --group dev        # installs runtime + dev dependencies
+pip install pikapika-organizer
 ```
 
 Useful helpers are available via `make`:
@@ -73,7 +72,7 @@ If you prefer plain commands:
 uv run pytest              # run tests
 uv run ruff check          # lint
 uv run ruff format         # format
-uv run pikapika --dry-run  # execute CLI
+uv run pikapika-organizer --dry-run  # execute CLI
 ```
 
 ---
@@ -81,10 +80,10 @@ uv run pikapika --dry-run  # execute CLI
 ## Usage
 
 Run commands from the project root (or install the package and use the
-`pikapika` entry point globally).
+`pikapika-organizer` entry point globally).
 
 ```bash
-uv run pikapika --help
+uv run pikapika-organizer --help
 ```
 
 ### Common flags
@@ -102,23 +101,23 @@ uv run pikapika --help
 
 ```bash
 # Preview current user's Downloads
-uv run pikapika --dry-run
+uv run pikapika-organizer --dry-run
 
 # Organize a specific folder for real
-uv run pikapika --path "D:\Downloads" 
+uv run pikapika-organizer --path "D:\Downloads" 
 
 # Go recursive and quarantine stale junk (>= 10 days old)
-uv run pikapika --recursive --quarantine-junk --junk-days 10
+uv run pikapika-organizer --recursive --quarantine-junk --junk-days 10
 
 # Send junk to Recycle Bin instead of _Quarantine
-uv run pikapika --quarantine-junk --trash-junk
+uv run pikapika-organizer --quarantine-junk --trash-junk
 ```
 
 ---
 
 ## Customizing categories
 
-Edit the `CATEGORIES` dictionary in `src/pikapika/__init__.py`:
+Edit the `CATEGORIES` dictionary in `src/pikapika_organizer/__init__.py`:
 
 ```python
 CATEGORIES = {

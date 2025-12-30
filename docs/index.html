@@ -34,9 +34,9 @@
                 <div class="badges">
                     <img src="https://img.shields.io/badge/Python-3.13-blue" alt="Python 3.13">
                     <img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License">
-                    <img src="https://img.shields.io/pypi/v/pikapika.svg" alt="PyPI Version">
-                    <img src="https://pepy.tech/badge/pikapika" alt="Downloads">
-                    <img src="https://img.shields.io/github/stars/arizmuajianisan/pikapika" alt="GitHub Stars">
+                    <img src="https://img.shields.io/badge/uv-compatible-green" alt="uv compatible">
+                    <img src="https://github.com/arizmuajianisan/pikapika/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI">
+                    <img src="https://github.com/arizmuajianisan/pikapika/workflows/Release/badge.svg" alt="Release">
                 </div>
                 <div class="cta-buttons">
                     <a href="https://github.com/arizmuajianisan/pikapika" class="btn btn-primary" target="_blank">
@@ -46,7 +46,7 @@
                         </svg>
                         View on GitHub
                     </a>
-                    <a href="https://pypi.org/project/pikapika/" class="btn btn-secondary" target="_blank">
+                    <a href="https://pypi.org/project/pikapika-organizer/" class="btn btn-secondary" target="_blank">
                         Install from PyPI
                     </a>
                 </div>
@@ -97,8 +97,15 @@
                 <div class="install-card">
                     <h3>Install from PyPI</h3>
                     <div class="code-block">
-                        <code>pip install pikapika</code>
-                        <button class="copy-btn" onclick="copyToClipboard('pip install pikapika', this)">Copy</button>
+                        <code>pip install pikapika-organizer</code>
+                        <button class="copy-btn" onclick="copyToClipboard('pip install pikapika-organizer', this)">Copy</button>
+                    </div>
+                </div>
+                <div class="install-card">
+                    <h3>Run with uvx (No Install)</h3>
+                    <div class="code-block">
+                        <code>uvx pikapika-organizer</code>
+                        <button class="copy-btn" onclick="copyToClipboard('uvx pikapika-organizer', this)">Copy</button>
                     </div>
                 </div>
                 <div class="install-card">
@@ -119,35 +126,35 @@
                 <div class="example">
                     <h3>Preview Changes (Dry Run)</h3>
                     <div class="code-block">
-                        <code>pikapika --dry-run</code>
-                        <button class="copy-btn" onclick="copyToClipboard('pikapika --dry-run', this)">Copy</button>
+                        <code>pikapika-organizer --dry-run</code>
+                        <button class="copy-btn" onclick="copyToClipboard('pikapika-organizer --dry-run', this)">Copy</button>
                     </div>
                     <p class="example-description">See what would happen without making any changes</p>
                 </div>
                 <div class="example">
                     <h3>Organize Specific Folder</h3>
                     <div class="code-block">
-                        <code>pikapika --path "D:\Downloads"</code>
+                        <code>pikapika-organizer --path "D:\Downloads"</code>
                         <button class="copy-btn"
-                            onclick="copyToClipboard('pikapika --path &quot;D:\\\\Downloads&quot;', this)">Copy</button>
+                            onclick="copyToClipboard('pikapika-organizer --path &quot;D:\\\\Downloads&quot;', this)">Copy</button>
                     </div>
                     <p class="example-description">Organize a specific directory</p>
                 </div>
                 <div class="example">
                     <h3>Recursive Organization</h3>
                     <div class="code-block">
-                        <code>pikapika --recursive --quarantine-junk --junk-days 10</code>
+                        <code>pikapika-organizer --recursive --quarantine-junk --junk-days 10</code>
                         <button class="copy-btn"
-                            onclick="copyToClipboard('pikapika --recursive --quarantine-junk --junk-days 10', this)">Copy</button>
+                            onclick="copyToClipboard('pikapika-organizer --recursive --quarantine-junk --junk-days 10', this)">Copy</button>
                     </div>
                     <p class="example-description">Organize subdirectories and quarantine old junk files</p>
                 </div>
                 <div class="example">
                     <h3>Send Junk to Trash</h3>
                     <div class="code-block">
-                        <code>pikapika --quarantine-junk --trash-junk</code>
+                        <code>pikapika-organizer --quarantine-junk --trash-junk</code>
                         <button class="copy-btn"
-                            onclick="copyToClipboard('pikapika --quarantine-junk --trash-junk', this)">Copy</button>
+                            onclick="copyToClipboard('pikapika-organizer --quarantine-junk --trash-junk', this)">Copy</button>
                     </div>
                     <p class="example-description">Move junk files to system trash instead of quarantine</p>
                 </div>
@@ -205,7 +212,7 @@
                     <span>•</span>
                     <a href="https://github.com/arizmuajianisan/pikapika/issues" target="_blank">Issues</a>
                     <span>•</span>
-                    <a href="https://pypi.org/project/pikapika/" target="_blank">PyPI</a>
+                    <a href="https://pypi.org/project/pikapika-organizer/" target="_blank">PyPI</a>
                     <span>•</span>
                     <a href="https://github.com/arizmuajianisan/pikapika/blob/main/LICENSE" target="_blank">MIT
                         License</a>

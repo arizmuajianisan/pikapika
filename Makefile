@@ -1,4 +1,4 @@
-.PHONY: help test check format format-check install dev-install run clean release-patch release-minor release-major release-dry
+.PHONY: help test check format format-check install dev-install run run-dry serve clean release-patch release-minor release-major release-dry
 
 # Default target
 help:
@@ -10,6 +10,8 @@ help:
 	@echo "  install       - Install the package"
 	@echo "  dev-install   - Install with dev dependencies"
 	@echo "  run           - Run the pikapika CLI"
+	@echo "  run-dry       - Run the pikapika CLI in dry run mode"
+	@echo "  serve         - Start local documentation server"
 	@echo "  clean         - Clean cache files"
 	@echo "  release-patch - Create patch release (x.y.Z)"
 	@echo "  release-minor - Create minor release (x.Y.z)"
@@ -42,7 +44,16 @@ dev-install:
 
 # Run the CLI
 run:
-	uv run pikapika
+	uv run pikapika-organizer
+
+run-dry:
+	uv run pikapika-organizer --dry-run
+
+# Start local documentation server
+serve:
+	@echo "Starting documentation server on http://localhost:8000"
+	@echo "Press Ctrl+C to stop"
+	cd docs && uv run python -m http.server 8000
 
 # Clean cache and build artifacts
 clean:

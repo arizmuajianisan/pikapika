@@ -367,8 +367,8 @@ wheels = [
 ]
 
 [[package]]
-name = "pikapika"
-version = "0.1.0"
+name = "pikapika-organizer"
+version = "0.3.0"
 source = { editable = "." }
 dependencies = [
     { name = "send2trash" },
