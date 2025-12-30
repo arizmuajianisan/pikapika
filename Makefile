@@ -1,4 +1,4 @@
-.PHONY: help test check format format-check install dev-install run clean
+.PHONY: help test check format format-check install dev-install run clean release-patch release-minor release-major
 
 # Default target
 help:
@@ -11,6 +11,9 @@ help:
 	@echo "  dev-install   - Install with dev dependencies"
 	@echo "  run           - Run the pikapika CLI"
 	@echo "  clean         - Clean cache files"
+	@echo "  release-patch - Create patch release (x.y.Z)"
+	@echo "  release-minor - Create minor release (x.Y.z)"
+	@echo "  release-major - Create major release (X.y.z)"
 
 # Run tests
 test:
@@ -49,3 +52,13 @@ clean:
 	@rm -rf build
 	@rm -rf dist
 	@echo "Done!"
+
+# Release commands
+release-patch:
+	uv run python scripts/release.py patch
+
+release-minor:
+	uv run python scripts/release.py minor
+
+release-major:
+	uv run python scripts/release.py major

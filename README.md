@@ -1,11 +1,16 @@
 # Pikapika — Downloads Folder Organizer
 
+![Python](https://img.shields.io/badge/Python-3.13-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+![PyPI](https://img.shields.io/pypi/v/pikapika.svg)
+![Downloads](https://pepy.tech/badge/pikapika)
+![GitHub Stars](https://img.shields.io/github/stars/arizmuajianisan/pikapika)
+
+
 “Pika Pika” is an onomatopoeia in Japanese, meaning “shiny” or “sparkly.” This
 project is mainly used to clean your folder of clutter and manage it efficiently.
-
-Pikapika is a Python CLI that keeps your Downloads directory tidy by automatically
-filing items into category folders (Images, Documents, Archives, Installers, etc.)
-and optionally quarantining junk files such as partial downloads.
+It automatically files items into category folders (Images, Documents, Archives, Installers, etc.)
+and optionally quarantines junk files such as partial downloads.
 
 > Built with Python 3.13 and the [`uv`](https://github.com/astral-sh/uv) workflow.
 
@@ -132,6 +137,64 @@ The test suite (`tests/test_pikapika.py`) covers:
 - duplicate handling
 - junk quarantine/trash flow
 - recursive traversal and skip logic
+
+---
+
+## Release Process
+
+This project uses automated releases via GitHub Actions, similar to `release-it` for JavaScript projects.
+
+### Quick Release (Recommended)
+```bash
+# Patch release (bug fixes)
+make release-patch
+
+# Minor release (new features)
+make release-minor
+
+# Major release (breaking changes)
+make release-major
+```
+
+### Manual Release Steps
+```bash
+# 1. Run the release script
+uv run python scripts/release.py patch
+
+# 2. The script will:
+#    - Check git status is clean
+#    - Run tests and linting
+#    - Update version in pyproject.toml
+#    - Build package
+#    - Create and push git tag (e.g., v0.1.1)
+
+# 3. GitHub Actions will automatically:
+#    - Run comprehensive tests
+#    - Build and validate package
+#    - Publish to TestPyPI
+#    - Verify TestPyPI installation
+#    - Publish to production PyPI
+#    - Create GitHub Release with changelog
+```
+
+### Dry Run Mode
+```bash
+# Preview what would happen without making changes
+uv run python scripts/release.py patch --dry-run
+```
+
+### Release Workflow Details
+- **Trigger**: Git tags starting with `v` (e.g., `v0.1.0`, `v1.2.3`)
+- **Testing**: Multi-platform tests (Ubuntu, Windows, macOS)
+- **Publishing**: TestPyPI → PyPI (with verification)
+- **Release Notes**: Auto-generated changelog from git commits
+- **Badges**: Updated automatically after release
+
+### Required GitHub Secrets
+Set these in your repository settings:
+- `TEST_PYPI_API_TOKEN`: TestPyPI API token
+- `PYPI_API_TOKEN`: Production PyPI API token
+- `GITHUB_TOKEN`: Automatically provided by GitHub Actions
 
 ---
 
