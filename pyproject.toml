@@ -1,5 +1,5 @@
 [project]
-name = "pikapika"
+name = "pikapika-organizer"
 version = "0.2.0"
 description = "A Python CLI utility to organize your Downloads folder by extension"
 readme = "README.md"
@@ -48,7 +48,7 @@ dev = [
 ]
 
 [project.scripts]
-pikapika = "pikapika:main"
+pikapika = "pikapika_organizer:main"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

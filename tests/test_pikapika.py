@@ -10,7 +10,7 @@ from unittest.mock import patch
 
 import pytest
 
-from pikapika import (
+from pikapika_organizer import (
     DEFAULT_TARGET_NAME,
     category_for_extension,
     clean_downloads,
