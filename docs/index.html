@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pikapika - A Python CLI utility to organize your Downloads folder by extension">
+    <meta name="keywords" content="python, cli, file organizer, downloads, cleanup, automation">
+    <meta name="author" content="Ariz Muajianisan">
+    <title>Pikapika - Downloads Folder Organizer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="hero-content">
+                <div class="logo-container">
+                    <div class="logo">⚡</div>
+                    <h1 class="title">Pikapika</h1>
+                </div>
+                <p class="subtitle">A Python CLI utility to organize your Downloads folder by extension</p>
+                <div class="badges">
+                    <img src="https://img.shields.io/badge/Python-3.13-blue" alt="Python 3.13">
+                    <img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License">
+                    <img src="https://img.shields.io/pypi/v/pikapika.svg" alt="PyPI Version">
+                    <img src="https://pepy.tech/badge/pikapika" alt="Downloads">
+                    <img src="https://img.shields.io/github/stars/arizmuajianisan/pikapika" alt="GitHub Stars">
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://github.com/arizmuajianisan/pikapika" class="btn btn-primary" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                        View on GitHub
+                    </a>
+                    <a href="https://pypi.org/project/pikapika/" class="btn btn-secondary" target="_blank">
+                        Install from PyPI
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Features Section -->
+        <section class="features">
+            <h2 class="section-title">Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Dry Run Mode</h3>
+                    <p>Preview all planned operations before making any changes to your files</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📁</div>
+                    <h3>Smart Categorization</h3>
+                    <p>Automatically organize files into categories using customizable extension mappings</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🗑️</div>
+                    <h3>Junk Handling</h3>
+                    <p>Quarantine or trash incomplete downloads and temporary files safely</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Duplicate Safety</h3>
+                    <p>Automatically rename conflicts to prevent overwriting existing files</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌲</div>
+                    <h3>Recursive Mode</h3>
+                    <p>Organize nested folders while intelligently skipping system directories</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Highly Configurable</h3>
+                    <p>Customize categories, file extensions, and behavior to match your workflow</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Installation Section -->
+        <section class="installation">
+            <h2 class="section-title">Quick Start</h2>
+            <div class="install-methods">
+                <div class="install-card">
+                    <h3>Install from PyPI</h3>
+                    <div class="code-block">
+                        <code>pip install pikapika</code>
+                        <button class="copy-btn" onclick="copyToClipboard('pip install pikapika', this)">Copy</button>
+                    </div>
+                </div>
+                <div class="install-card">
+                    <h3>Install from Source</h3>
+                    <div class="code-block">
+                        <code>git clone https://github.com/arizmuajianisan/pikapika.git<br>cd pikapika<br>uv sync --group dev</code>
+                        <button class="copy-btn"
+                            onclick="copyToClipboard('git clone https://github.com/arizmuajianisan/pikapika.git\ncd pikapika\nuv sync --group dev', this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Usage Section -->
+        <section class="usage">
+            <h2 class="section-title">Usage Examples</h2>
+            <div class="usage-examples">
+                <div class="example">
+                    <h3>Preview Changes (Dry Run)</h3>
+                    <div class="code-block">
+                        <code>pikapika --dry-run</code>
+                        <button class="copy-btn" onclick="copyToClipboard('pikapika --dry-run', this)">Copy</button>
+                    </div>
+                    <p class="example-description">See what would happen without making any changes</p>
+                </div>
+                <div class="example">
+                    <h3>Organize Specific Folder</h3>
+                    <div class="code-block">
+                        <code>pikapika --path "D:\Downloads"</code>
+                        <button class="copy-btn"
+                            onclick="copyToClipboard('pikapika --path &quot;D:\\\\Downloads&quot;', this)">Copy</button>
+                    </div>
+                    <p class="example-description">Organize a specific directory</p>
+                </div>
+                <div class="example">
+                    <h3>Recursive Organization</h3>
+                    <div class="code-block">
+                        <code>pikapika --recursive --quarantine-junk --junk-days 10</code>
+                        <button class="copy-btn"
+                            onclick="copyToClipboard('pikapika --recursive --quarantine-junk --junk-days 10', this)">Copy</button>
+                    </div>
+                    <p class="example-description">Organize subdirectories and quarantine old junk files</p>
+                </div>
+                <div class="example">
+                    <h3>Send Junk to Trash</h3>
+                    <div class="code-block">
+                        <code>pikapika --quarantine-junk --trash-junk</code>
+                        <button class="copy-btn"
+                            onclick="copyToClipboard('pikapika --quarantine-junk --trash-junk', this)">Copy</button>
+                    </div>
+                    <p class="example-description">Move junk files to system trash instead of quarantine</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Command Line Options -->
+        <section class="cli-options">
+            <h2 class="section-title">Command Line Options</h2>
+            <div class="options-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Flag</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>--path PATH</code></td>
+                            <td>Downloads directory to organize (defaults to user's Downloads folder)</td>
+                        </tr>
+                        <tr>
+                            <td><code>--dry-run</code></td>
+                            <td>Print intended operations without touching the filesystem</td>
+                        </tr>
+                        <tr>
+                            <td><code>--recursive</code></td>
+                            <td>Walk subdirectories (skips system folders automatically)</td>
+                        </tr>
+                        <tr>
+                            <td><code>--quarantine-junk</code></td>
+                            <td>Move old junk files to _Quarantine folder</td>
+                        </tr>
+                        <tr>
+                            <td><code>--junk-days N</code></td>
+                            <td>Minimum age (days) for junk files before action (default: 7)</td>
+                        </tr>
+                        <tr>
+                            <td><code>--trash-junk</code></td>
+                            <td>Send junk files to OS trash (requires send2trash)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>Built with ❤️ by <a href="https://github.com/arizmuajianisan" target="_blank">Ariz Muajianisan</a>
+                </p>
+                <p class="footer-links">
+                    <a href="https://github.com/arizmuajianisan/pikapika" target="_blank">GitHub</a>
+                    <span>•</span>
+                    <a href="https://github.com/arizmuajianisan/pikapika/issues" target="_blank">Issues</a>
+                    <span>•</span>
+                    <a href="https://pypi.org/project/pikapika/" target="_blank">PyPI</a>
+                    <span>•</span>
+                    <a href="https://github.com/arizmuajianisan/pikapika/blob/main/LICENSE" target="_blank">MIT
+                        License</a>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
