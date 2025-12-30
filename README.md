@@ -194,7 +194,7 @@ uv run python scripts/release.py patch --dry-run
 Set these in your repository settings:
 - `TEST_PYPI_API_TOKEN`: TestPyPI API token
 - `PYPI_API_TOKEN`: Production PyPI API token
-- `GITHUB_TOKEN`: Automatically provided by GitHub Actions
+- `GITHUB_TOKEN`: Automatically provided by GitHub Actions (no setup needed)
 
 ---
 
