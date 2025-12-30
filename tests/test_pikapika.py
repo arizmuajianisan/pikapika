@@ -116,7 +116,7 @@ class TestIsOlderThan:
 class TestDefaultDownloadsDir:
     """Test the default_downloads_dir function."""
 
-    @patch("pikapika.Path.home")
+    @patch("pikapika_organizer.Path.home")
     def test_default_downloads_dir(self, mock_home, tmp_path):
         """Test that default downloads dir is correctly constructed."""
         mock_home.return_value = tmp_path
@@ -265,7 +265,7 @@ class TestCleanDownloads:
         # .git directory should be untouched
         assert (subdir / "config").exists()
 
-    @patch("pikapika.send2trash")
+    @patch("pikapika_organizer.send2trash")
     def test_junk_file_trash(self, mock_send2trash):
         """Test that junk files are sent to trash when use_trash=True."""
         # Create old junk file

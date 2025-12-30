@@ -33,7 +33,7 @@ jobs:
         run: uv sync --group dev
 
       - name: Run tests
-        run: uv run pytest --cov=pikapika --cov-report=xml
+        run: uv run pytest --cov=pikapika_organizer --cov-report=xml
 
       - name: Run linting
         run: uv run ruff check

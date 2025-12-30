@@ -28,7 +28,7 @@ jobs:
         run: uv sync --group dev
 
       - name: Run tests
-        run: uv run pytest
+        run: uv run pytest --cov=pikapika_organizer --cov-report=xml
 
       - name: Run linting
         run: uv run ruff check
@@ -132,7 +132,7 @@ jobs:
             
             ## Installation
             ```bash
-            pip install pikapika
+            pip install pikapika-organizer
             ```
             
             ## Usage
@@ -142,7 +142,7 @@ jobs:
             
             ## Verification
             - ✅ Tests passed
-            - ✅ Published to [PyPI](https://pypi.org/project/pikapika/)
-            - ✅ Available via `pip install pikapika`
+            - ✅ Published to [PyPI](https://pypi.org/project/pikapika-organizer/)
+            - ✅ Available via `pip install pikapika-organizer`
           draft: false
           prerelease: false
