@@ -8,7 +8,6 @@ on:
 # Set permissions for the workflow
 permissions:
   contents: write
-  releases: write
 
 env:
   PYTHON_VERSION: '3.13'
